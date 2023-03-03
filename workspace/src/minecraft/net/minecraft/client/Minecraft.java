@@ -35,6 +35,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 import javax.imageio.ImageIO;
+
+import hsclient.Client;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.MusicTicker;
@@ -184,6 +186,9 @@ import org.lwjgl.opengl.GLContext;
 import org.lwjgl.opengl.OpenGLException;
 import org.lwjgl.opengl.PixelFormat;
 import org.lwjgl.util.glu.GLU;
+import hsclient.ui.MainMenu;
+
+// 잠수중
 
 public class Minecraft implements IThreadListener, IPlayerUsage
 {
@@ -404,6 +409,8 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         try
         {
             this.startGame();
+            System.out.println("Starting hsClient - 1.8.9");
+            Client.getInstance().init();
         }
         catch (Throwable throwable)
         {
@@ -1050,8 +1057,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
     {
         try
         {
+            Client.getInstance().shutdown();
             this.stream.shutdownStream();
             logger.info("Stopping!");
+            System.out.println("Shutting down hsClient - 1.8.9");
 
             try
             {

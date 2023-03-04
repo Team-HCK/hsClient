@@ -9,6 +9,8 @@ import org.lwjgl.opengl.Display;
 
 public class Client {
 
+
+
     private static final Client INSTANCE = new Client();
     public static final Client getInstance() {
         return INSTANCE;
